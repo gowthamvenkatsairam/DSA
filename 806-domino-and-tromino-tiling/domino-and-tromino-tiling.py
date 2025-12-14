@@ -19,18 +19,17 @@ class Solution:
         #     return dp[(col, state)]
         # return f(0, 0)
 
-        dp = [[0] * 3 for _ in range(n+1)]
-        dp[n][0] = 1
+        first = [1, 0, 0]
+        second = [0, 0, 0]
         mod = 10 ** 9 + 7
         for col in range(n-1, -1, -1):
-            for state in range(3):
-                if state == 0:
-                    dp[col][state] = dp[col+1][0] + dp[col+1][1] + dp[col+1][2] + (dp[col+2][0] if col+2 <= n else 0)
-                if state == 1:
-                    dp[col][state] = dp[col+1][2] + (dp[col+2][0] if col+2 <= n else 0)
-                if state == 2:
-                    dp[col][state] = (dp[col+2][0] if col+2 <= n else 0) + dp[col+1][1]
-        return dp[0][0] % mod
+            curr = [0, 0, 0]
+            curr[0] = (first[0] + first[1] + first[2] + second[0]) % mod
+            curr[1] = (first[2] + second[0]) % mod
+            curr[2] = (second[0] + first[1]) % mod
+            second = first
+            first = curr
+        return first[0]
 
 
         
