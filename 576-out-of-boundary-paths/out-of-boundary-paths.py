@@ -15,7 +15,8 @@ class Solution:
                 ni, nj = i + di, j + dj
                 ways += f(ni, nj, moves + 1)
             dp[(i, j , moves)] = ways % mod
-            return dp[((i, j, moves))]
+            return dp[(i, j, moves)]
         return f(startRow, startColumn, 0)
+
             
         
