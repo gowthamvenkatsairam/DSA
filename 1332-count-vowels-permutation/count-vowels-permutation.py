@@ -1,29 +1,28 @@
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
         mod = 10 ** 9 + 7
-        dp = {}
+        dp = [[-1] * 5 for _ in range(n)]
         next_map = {
-            "a" : ["e"],
-            "e" : ["a", "i"],
-            "i" : ["a", "e", "o", "u"],
-            "o" : ["i", "u"],
-            "u" : ["a"]
+            0 : [1],
+            1 : [0, 2],
+            2 : [0, 1, 3, 4],
+            3 : [2, 4],
+            4 : [0]
         }
         def f(idx, prev):
             if idx == n:
                 return 1
-            if (idx, prev) in dp:
-                return dp[(idx, prev)]
+            if dp[idx][prev] != -1:
+                return dp[idx][prev]
             ways = 0
-            if not prev:
-                for key, value in next_map.items():
-                    ways += f(idx+1, key)
-            else:
-                for next_char in next_map[prev]:
-                    ways += f(idx + 1, next_char)
-            dp[(idx, prev)] = ways % mod
-            return dp[(idx, prev)]
-        return f(0, None)
+            for next_char in next_map[prev]:
+                ways += f(idx + 1, next_char)
+            dp[idx][prev] = ways % mod
+            return dp[idx][prev]
+        result = 0
+        for i in range(5):
+            result += f(1, i)
+        return result % mod
 
         
         
