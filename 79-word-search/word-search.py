@@ -2,7 +2,7 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         m, n = len(board), len(board[0])
         vis = [[0] * n for _ in range(m)]
-        dir = {(-1, 0), (0, 1), (1, 0), (0, -1)}
+        dir = [(-1, 0), (0, 1), (1, 0), (0, -1)]
         def findWord(i, j, idx):
             if idx == len(word):
                 return True
