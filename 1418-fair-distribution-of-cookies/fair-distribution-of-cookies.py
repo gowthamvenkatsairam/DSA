@@ -1,7 +1,7 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         n = len(cookies)
-        # cookies.sort(reverse = True)
+        cookies.sort(reverse = True)
         arr = [0] * k
         self.min_diff = sum(cookies)
         def findUnfair(idx):
