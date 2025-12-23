@@ -5,9 +5,7 @@ class Solution:
         vis = [[0] * n for _ in range(m)]
         def countPaths(i, j, unused):
             if grid[i][j] == 2:
-                if unused == 0:
-                    return 1
-                return 0
+                return 1 if unused == -1 else 0
             ways = 0
             for di, dj in dir:
                 ni, nj = i + di, j + dj
@@ -24,7 +22,7 @@ class Solution:
             for j in range(n):
                 if grid[i][j] == 1:
                     start_r, start_c = i, j
-                elif grid[i][j] in (0, 2):
+                elif grid[i][j] == 0:
                     unused += 1
         vis[start_r][start_c] = 1
         return countPaths(start_r, start_c, unused)
