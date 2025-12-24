@@ -14,10 +14,9 @@ class Solution:
             for ch in ('a','b','c'):
                 if idx-1 >= 0 and ch == path[idx-1]:
                     continue
-                if self.ans == None:
-                    path.append(ch)
-                    generateStrings(idx+1)
-                    path.pop()
+                path.append(ch)
+                generateStrings(idx+1)
+                path.pop()
         generateStrings(0)
         return self.ans if self.ans != None else ""
             
