@@ -1,5 +1,7 @@
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
+        if k > 3 * (2 ** (n-1)):
+            return ""
         path = []
         self.cnt = 0
         self.ans = None
@@ -18,7 +20,7 @@ class Solution:
                 generateStrings(idx+1)
                 path.pop()
         generateStrings(0)
-        return self.ans if self.ans != None else ""
+        return self.ans
             
 
         
