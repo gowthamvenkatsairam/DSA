@@ -14,7 +14,7 @@ class Solution:
             curr_max, curr_min = max(curr_max, node.val), min(curr_min, node.val) 
             dfs(node.left, curr_min, curr_max)
             dfs(node.right, curr_min, curr_max)
-            return self.result
-        return dfs(root, root.val, root.val)
+        dfs(root, root.val, root.val)
+        return self.result
             
         
