@@ -17,7 +17,7 @@ class Solution:
                     self.result = node.val
                 elif depth == self.max_depth:
                     self.result += node.val
-                else: return
+                return
             dfs(node.left, depth)
             dfs(node.right, depth)
         dfs(root, 0)
