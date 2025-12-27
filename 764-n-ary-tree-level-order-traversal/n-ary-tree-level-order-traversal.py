@@ -16,7 +16,6 @@ class Solution:
             for _ in range(len(dq)):
                 node = dq.popleft()
                 level.append(node.val)
-                #if node.children:
                 for node in node.children:
                     dq.append(node)
             result.append(level)
