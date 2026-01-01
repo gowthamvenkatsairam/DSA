@@ -7,7 +7,7 @@ class Solution:
             freq[ch] = freq.get(ch, 0) + 1
         for ch, cnt in freq.items():
             heapq.heappush(heap, (-cnt, ch))
-        result = [0] * len(s)
+        result = []
         for i in range(len(s)):
             while dq and i >= dq[0][0]:
                 a, b, ch = dq.popleft()
@@ -15,7 +15,7 @@ class Solution:
             if not heap:
                 return ""
             cnt, ch = heapq.heappop(heap)
-            result[i] = ch
+            result.append(ch)
             if cnt != -1:
                 next_avl = i + k
                 dq.append((next_avl, cnt + 1, ch))
